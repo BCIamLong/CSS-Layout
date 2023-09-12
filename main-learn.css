@@ -14,7 +14,7 @@ body {
 }
 
 .container {
-  width: 800px;
+  width: 1200px;
   /* margin-left: auto;
   margin-right: auto; */
   margin: 0 auto;
@@ -344,3 +344,99 @@ nav {
   display: block;
   /* * so now the problem will be fixed as well */
 }
+
+/* .container {
+  width: 1200px;
+} */
+
+/* .container::after {
+  content: "";
+  display: block;
+  clear: both;
+} */
+
+/* ! whenn we maipulate with box, especially big box we should set background for them why? to see the box easy and help us for building layouts 
+* and before we use float we actually to change width of these two element if we want them side by side, because now we have article and aside is block element and it occupy 100% of the available width of the container
+* so if we want them side by side each of them must have certain width
+* when we defined container width we will set width for child container with the logic width to them can side by side*/
+article {
+  background-color: rebeccapurple;
+  width: 825px;
+  float: left;
+}
+
+/* article::after {
+  content: "";
+  clear: both;
+  display: block;
+} */
+
+aside {
+  /* background-color: #ffe70e; */
+  float: right;
+  width: 300px;
+}
+
+/* aside::after {
+  content: "";
+  clear: both;
+  display: block;
+} */
+
+.related li {
+  width: 220px;
+  margin: 20px 0;
+  height: 100px;
+  /* background-color: red; */
+  /* vertical-align: middle; */
+}
+
+.related li img {
+  background-color: hsl(188, 83%, 37%);
+  /* margin-top: 5px; */
+  float: left;
+}
+.related li a:link {
+  background-color: #ffe70e;
+  font-weight: bold;
+  width: 125px;
+  float: right;
+  font-size: 17px;
+}
+.related li p {
+  background-color: aquamarine;
+  font-style: italic;
+  font-weight: normal;
+  width: 125px;
+  float: right;
+  font-size: 14px;
+}
+
+.related li::after {
+  content: "";
+  clear: both;
+  display: block;
+}
+
+/* * because in this case we don't need float footer right because footer is always in end of part layout
+* and because it doesn't floated so it's also on flow of the page so now we don't use clearfix cuz we still have footer element here and the height still normal and not collasped
+* and we will clear floats in footer */
+footer {
+  /* width: 900px; */
+  background-color: aqua;
+  clear: both;
+}
+/* footer::after {
+  content: "";
+  clear: both;
+  display: block;
+} */
+
+/* button {
+  float: right;
+}
+button::after {
+  content: "";
+  display: block;
+  clear: both;
+} */
