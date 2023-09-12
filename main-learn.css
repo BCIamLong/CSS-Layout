@@ -2,6 +2,11 @@
   /* border-top: 10px solid #1098ad; */
   margin: 0;
   padding: 0;
+  /* ! we want  box-sizing: border-box to all every single elements on the page to remove the default behavior of the model box so universal selector is good to apply this
+  * and we don't put it in body because box-sizing not inherit property 
+  * like margin and padding we used to reset default of our page by browser and now with box-sizing: border-box we enable the better behavior of the box model on every single element
+  ! and it's really important trick we should apply when code CSS because many CSS developers also apply this*/
+  box-sizing: border-box;
 }
 
 /* PAGE SECTIONS */
@@ -50,8 +55,8 @@ aside {
   border-bottom: 5px solid #1098ad;
   /* padding-top: 50px;
   padding-bottom: 50px; */
-  padding: 50px 0;
-  width: 500px;
+  /* padding: 50px 0; */
+  /* width: 500px; */
 }
 
 /* SMALLER ELEMENTS */
@@ -371,10 +376,18 @@ article {
   display: block;
 } */
 
+/* ? Box sizing Border Box
+* now if we add some padding to this aside sidebar and if the width greater than 300px it'll not fit for this element can side by side with article and it'll move down to footer 
+* and that's because the default of the box model: the width will caclulate by [ pading right + width +  pading left ]
+* so the default of the box model is now not good in this case so we need to config and change default of box model*/
 aside {
   /* background-color: #ffe70e; */
   float: right;
   width: 300px;
+  padding: 50px 40px;
+  /* * but we want set this box-sizing to bordor-box to all elements on our page  so how can we do that?
+  * we will use universal selector */
+  /* box-sizing: border-box; */
 }
 
 /* aside::after {
@@ -382,10 +395,19 @@ aside {
   clear: both;
   display: block;
 } */
+.related {
+  margin-left: 0;
+  margin-bottom: 0;
+}
+
+.related h4 {
+  display: block;
+  margin-bottom: 30px;
+}
 
 .related li {
   width: 220px;
-  margin: 20px 0;
+  /* margin: 20px 0; */
   height: 100px;
   /* background-color: red; */
   /* vertical-align: middle; */
