@@ -313,3 +313,34 @@ h1 {
 nav {
   float: right;
 }
+
+/* ? CLEAR FLOATs */
+/* * create another element and add it to header HTML then select this element and clear floats */
+.clear {
+  /* * we can use clear property to clear float
+  * values we can use left right and both 
+  * this case we have left and right float so we use both
+  * and problem is solved
+  * so back the past when we build all website using float
+  * so images now that we had a row and in there we had four columns so we needed one element for each of these columns and we had them floated all side by side
+  * then in that siuation the height of the row so of the parent elment of the four columns would collapse so then we would have to go in and create an empty div element in each of situations 
+  * and that could happen like 10 or 20 times on a page and so that would nt=ot be useful at all and we also don't want our HTML messy with all these empty div and it's bad practice
+  ! therefore we will go to other way which is called the clearfix hack and it use more in time we only have float to build layout
+  ! notice that: now we have modern way to build layout but understand it also useful*/
+
+  clear: both;
+}
+
+/* * Clearfix hack class
+* the reason to more use clearfix hack that's exactly to avoid having these kind of empty divs
+* so how it work? is that on the element that has the collapsed height we add a class which was usually called cleafix
+* and in CSS we will select that and fix */
+.clearfix::after {
+  /* * with this we created new last child element which like the way we create div class clear in header container element*/
+  content: "";
+  clear: both;
+  /* * remember that defauld pseudo element ::after and :: berfore is inline element 
+  ! however clearing floats like this only really works on a block-level element*/
+  display: block;
+  /* * so now the problem will be fixed as well */
+}

@@ -4,13 +4,16 @@
     <meta charset="UTF-8" />
     <link href="main-learn.css" rel="stylesheet" />
 
-    <title>Using Floats</title>
+    <title>Clearing Floats</title>
   </head>
 
   <body>
-    <h1>To build floats layout we need to understand what's float property</h1>
+    <!-- <h1>The way to clearing floats</h1> -->
+    <p>The way to clearing floats</p>
     <div class="container">
-      <header class="main-header">
+      <!-- * use clearfix to clear floats 
+      *on the element that has the collapsed height we will create new class which is usually called clearfix-->
+      <header class="main-header clearfix">
         <h1>📘 The Code Magazine</h1>
 
         <nav>
@@ -20,6 +23,9 @@
           <a href="#">Flexbox</a>
           <a href="#">CSS Grid</a>
         </nav>
+        <!-- * the simple way to clear floats is add another element to header and then clear floats fro there 
+        ! this way not good because it create many div elements and it'll messy your html code-->
+        <!-- <div class="clear"></div> -->
       </header>
 
       <article>
