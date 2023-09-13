@@ -14,10 +14,7 @@
       }
       .el--3 {
         background-color: green;
-        /** The height here will effect to all flex items, and all of them will have tall as the tallest element so now it's el--3 and height is 150px*/
         height: 150px;
-        /** so what things happen if we set width also like height? well it not effect to other elements just only for this element and other element still occupy the space enough for their text content*/
-        /*width: 400px;*/
       }
       .el--4 {
         background-color: goldenrod;
@@ -35,85 +32,97 @@
         background-color: crimson;
       }
 
+      /*>>>>>>>>>>>>>>>>>>FLEX PROPERTY<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+
+      /*
+      * Flex property is actually short hand for flex grow, flex shrink(thu nho) and flex basis
+      */
+      .el {
+        /*
+        * Default value of flex-grow is zero, flex-shrink is one, of flex-basis is auto 
+        flex-grow: 0;
+        flex-shrink: 1;
+        flex-basis: auto;
+        */
+        /*
+        * Flex Basis *
+        = so when we want to size Flex items and in particular with a width then we usually do not use the width property but instead we use flex basis
+        = if we want set width for flex item 100px width: flex-basis: 100px
+        ! if the content is many and larger than 100px then the element actually extends to fit that content 
+      --> so that means the flex-basis is not really rigid(cung nhac) so it's more like a recommendation that we make to browser but the browser will then paste on the content figure out the optional length right
+        ! the gap property in flex container create some space between flex elements but it's also descrease width flex item just like padding we used (cuz now we set box sizing to border box and remove default behavior of the box model right)
+        ? so what happen if we set the flex-basis too big
+        * go to TheFlexProperty.docx to watch
+        */
+        /* flex-basis: 100px;
+        flex-basis: 200px;
+        flex-shrink: 0;*/
+        /* flex-grow: 1;
+        * usually we never set flex-grow like this
+       
+        ! if we set flex-grow to 1 so now flex-basis here doesn't make sense
+        */
+        /*
+        *Flex shorthand*
+        = flex property is actually pretty smart for example we can set it to 1: flex: 1 and then it'll automatically figure out that this means that flex-grow should be 1
+        ! we always just use flex: 1 and we then end up with the same result
+        ! so as the best practice we should in fact never use of these three here individually but always use the flex property
+        flex: 1;
+        * we should do it like this
+        
+        flex: 0 0 200px;
+        ! and usually if we don't have flex-basis we always use flex 1 and that time we have flex-shrink: 1 and flex-grow: 1
+        */
+        flex: 1;
+        /*
+    --> so always use shorthand property and not one of these three here individually
+        */
+      }
+
       .container {
         /* STARTER */
         font-family: sans-serif;
         background-color: #ddd;
         font-size: 40px;
         margin: 40px;
-        gap: 30px;
-        /** and now we also create space bettwen element without using margin and now it's nicely in the flexbox flex container
-        ! and all element flex items don't have margin so we don't need remove margin from last element*/
+        width: 1200px;
+        gap: 10px;
 
-        /* LET USING SOME PROPERTIES OF FLEXBOX TO SPACING AND ALIGNING FLEX ITEMS */
         display: flex;
         align-items: center;
-        /** and we have align-items which align items along the cross Axis which by default is vertically so again it's all about vertical allignment by default
-        --! so basically using align-items on the flex container will make it so that all the flex items will have the same alignment so in this case all aigned to the center
-        --! however in many situation we want to overwrite that for one single element and so for that we use the align-self property for flex item
-        */
+
         justify-content: flex-start;
-        /*
-        * default of justify-content is flex-start
-        * we now this justify-content is align items along the main Axis by default that is horizontally so again it's all about horizontally allignment by default
-      --> so align-items and justify-content is the most important properties that apply it to the flex container and another one is Gap property
-        */
       }
 
       .el--1 {
         align-self: flex-start;
+
+        flex-grow: 6;
         /*
-        * and with this this element only one to moved to the top
-        * and it so most important property that we can use on the flex items
+        * so we can use flex-grow for one element so what's happen here?
+      -->Well now this element here was allowed to fill up all the remaining space and so these four are still with the size of the content and then the remaining space was  filled up by this element
         */
       }
 
       .el--5 {
         align-self: stretch;
-        /*
-        * with stretch this element will tall as the talest element
-        */
+
         order: -2;
       }
-      /*
-      * so changing the order in which flex items are displayed on the page can be very helpful when we are adapting a bigger layout to small layout for mobile screens
-      * now the default values of all elements is always zero so if we want move an element to very first position all we need to do is to specify a number that is lower than that
-      ! it's also true if we want soft elements to certain order we can set number from low to hight like -8, -7, -6, -5, -4, -3, -2, -1,....
-      */
+
       .el--6 {
-        /* * By default order of all elements is zero, not sort by order 1,2,3,4,... not it's 0,0,0,...
-        * and so to set an element move to first position we only specify the number lower than that like -1*/
         order: -1;
-        /* * now the el--6 is move to the first place of the row so now it became the very first element*/
       }
-      /*
-      * so it's also true that we can order element to back by use number greater than 0 like 1
-      * not it'll move to back
-      ! it's also true if we want soft elements to certain order like we can set 1, 2, 3, 4, 5,....
-      */
+
       .el--7 {
         order: 1;
       }
       .el--8 {
         order: 2;
-        /* * now it's moving back after el--7 right */
       }
 
-      /*
-      * SPACING FLEX ITEMS
-      * so we used justity-content to auto create space between element
-      ! but now we will create space with manually way which is most of the time even more important actually
-      * so in practice many times we are in fact interested in manually defining space between our flex elements and so there are two ways currently of doing that
-        = so the original one was to simply add margins to  the flex items like
-      */
       .el {
         /*margin-left: 30px;*/
-        /* * so with this we create 30px between elements
-        ! but with this way we need to go to the very last element and remove its space cuz it's not necessary so it's an extra step but we also have better way to definition of gap between these elements right here in the container
-        * so then we have basically definition how the flex item look like right there in the container element so again it's a lot nicer
-        * so maybe that doesn't make sense this point but maybe very helpful in practice
-        * so it's helpful to have all of this in the flex container
-        * so therefore a new property was added to flexbox which is called Gap in to flex container*/
       }
     </style>
   </head>
