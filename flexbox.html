@@ -41,38 +41,79 @@
         background-color: #ddd;
         font-size: 40px;
         margin: 40px;
+        gap: 30px;
+        /** and now we also create space bettwen element without using margin and now it's nicely in the flexbox flex container
+        ! and all element flex items don't have margin so we don't need remove margin from last element*/
 
-        /* LET START USING FLEXBOX */
-        /* to start with flexbox: we need use display property and set it to flex on some container element
-        * and with container element means any element that has couple of child elements like this container here */
+        /* LET USING SOME PROPERTIES OF FLEXBOX TO SPACING AND ALIGNING FLEX ITEMS */
         display: flex;
-        /* so now all these elememnt in this container are immediately side-by-side without having to use any floats or anything like that
-        * and these elements here we call them the flex items cuz they are child element of the flex container(cuz we set for container display flex so now it's flex container)
-        * now here each of these elements occupies exactly the space that it needs for its content
-        * the gray color in after the last flex item is background-color of this container of empty part container
-        * now again horizontally(chieu ngang) each of these elements takes up exactly the space that is necessary for it's text content
-        * however vertically things are a bit different so vertically by default all the flex items are as tall as the tallest element which is in this case we set .el--3 with height 150px
-        * and if we don't set the height it'll occupy only space that's necessary for the content*/
-
         align-items: center;
-        /*
-        * values use more: center, flex-start, flex-end, center is middle, flex-start is top and flex-end is bottom and by default value of this is stretch(keo dai) means that all the elements will automatically stretch as tall as the tallest element
-        * but center value(align-items: center) is one of the most important applications of flexbox
-        * just imagine how hard it would be to do this without flexbox so we need select all element except green element and then calc the margin to top and bottom to set it to center
-        * and with align-items: center it all happens automatically
-        * One of useful flex applications which is vertical centering
-        * so set center all these items vertically
-        * now they are verically aligned
-        * so flex container still takes the height of the highest  element which is this one of 150px
-        * but now all the other ones simply take the space that they need for the text or in general for the content and then they get vertically aligned in the center
+        /** and we have align-items which align items along the cross Axis which by default is vertically so again it's all about vertical allignment by default
+        --! so basically using align-items on the flex container will make it so that all the flex items will have the same alignment so in this case all aigned to the center
+        --! however in many situation we want to overwrite that for one single element and so for that we use the align-self property for flex item
         */
-        justify-content: space-between;
+        justify-content: flex-start;
         /*
-        * and we also can also center them horizontally so basically center all of these items inside of the fex container
-        * this property is a part of flexbox specification gives us a couple of other really helpful and nice options here
-        * values: center, space-between, space-around,...
-        ! space-between: distribute the res space of container for space of all elements and it's the same
+        * default of justify-content is flex-start
+        * we now this justify-content is align items along the main Axis by default that is horizontally so again it's all about horizontally allignment by default
+      --> so align-items and justify-content is the most important properties that apply it to the flex container and another one is Gap property
         */
+      }
+
+      .el--1 {
+        align-self: flex-start;
+        /*
+        * and with this this element only one to moved to the top
+        * and it so most important property that we can use on the flex items
+        */
+      }
+
+      .el--5 {
+        align-self: stretch;
+        /*
+        * with stretch this element will tall as the talest element
+        */
+        order: -2;
+      }
+      /*
+      * so changing the order in which flex items are displayed on the page can be very helpful when we are adapting a bigger layout to small layout for mobile screens
+      * now the default values of all elements is always zero so if we want move an element to very first position all we need to do is to specify a number that is lower than that
+      ! it's also true if we want soft elements to certain order we can set number from low to hight like -8, -7, -6, -5, -4, -3, -2, -1,....
+      */
+      .el--6 {
+        /* * By default order of all elements is zero, not sort by order 1,2,3,4,... not it's 0,0,0,...
+        * and so to set an element move to first position we only specify the number lower than that like -1*/
+        order: -1;
+        /* * now the el--6 is move to the first place of the row so now it became the very first element*/
+      }
+      /*
+      * so it's also true that we can order element to back by use number greater than 0 like 1
+      * not it'll move to back
+      ! it's also true if we want soft elements to certain order like we can set 1, 2, 3, 4, 5,....
+      */
+      .el--7 {
+        order: 1;
+      }
+      .el--8 {
+        order: 2;
+        /* * now it's moving back after el--7 right */
+      }
+
+      /*
+      * SPACING FLEX ITEMS
+      * so we used justity-content to auto create space between element
+      ! but now we will create space with manually way which is most of the time even more important actually
+      * so in practice many times we are in fact interested in manually defining space between our flex elements and so there are two ways currently of doing that
+        = so the original one was to simply add margins to  the flex items like
+      */
+      .el {
+        /*margin-left: 30px;*/
+        /* * so with this we create 30px between elements
+        ! but with this way we need to go to the very last element and remove its space cuz it's not necessary so it's an extra step but we also have better way to definition of gap between these elements right here in the container
+        * so then we have basically definition how the flex item look like right there in the container element so again it's a lot nicer
+        * so maybe that doesn't make sense this point but maybe very helpful in practice
+        * so it's helpful to have all of this in the flex container
+        * so therefore a new property was added to flexbox which is called Gap in to flex container*/
       }
     </style>
   </head>
