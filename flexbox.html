@@ -14,7 +14,10 @@
       }
       .el--3 {
         background-color: green;
+        /** The height here will effect to all flex items, and all of them will have tall as the tallest element so now it's el--3 and height is 150px*/
         height: 150px;
+        /** so what things happen if we set width also like height? well it not effect to other elements just only for this element and other element still occupy the space enough for their text content*/
+        /*width: 400px;*/
       }
       .el--4 {
         background-color: goldenrod;
@@ -39,7 +42,37 @@
         font-size: 40px;
         margin: 40px;
 
-        /* FLEXBOX */
+        /* LET START USING FLEXBOX */
+        /* to start with flexbox: we need use display property and set it to flex on some container element
+        * and with container element means any element that has couple of child elements like this container here */
+        display: flex;
+        /* so now all these elememnt in this container are immediately side-by-side without having to use any floats or anything like that
+        * and these elements here we call them the flex items cuz they are child element of the flex container(cuz we set for container display flex so now it's flex container)
+        * now here each of these elements occupies exactly the space that it needs for its content
+        * the gray color in after the last flex item is background-color of this container of empty part container
+        * now again horizontally(chieu ngang) each of these elements takes up exactly the space that is necessary for it's text content
+        * however vertically things are a bit different so vertically by default all the flex items are as tall as the tallest element which is in this case we set .el--3 with height 150px
+        * and if we don't set the height it'll occupy only space that's necessary for the content*/
+
+        align-items: center;
+        /*
+        * values use more: center, flex-start, flex-end, center is middle, flex-start is top and flex-end is bottom and by default value of this is stretch(keo dai) means that all the elements will automatically stretch as tall as the tallest element
+        * but center value(align-items: center) is one of the most important applications of flexbox
+        * just imagine how hard it would be to do this without flexbox so we need select all element except green element and then calc the margin to top and bottom to set it to center
+        * and with align-items: center it all happens automatically
+        * One of useful flex applications which is vertical centering
+        * so set center all these items vertically
+        * now they are verically aligned
+        * so flex container still takes the height of the highest  element which is this one of 150px
+        * but now all the other ones simply take the space that they need for the text or in general for the content and then they get vertically aligned in the center
+        */
+        justify-content: space-between;
+        /*
+        * and we also can also center them horizontally so basically center all of these items inside of the fex container
+        * this property is a part of flexbox specification gives us a couple of other really helpful and nice options here
+        * values: center, space-between, space-around,...
+        ! space-between: distribute the res space of container for space of all elements and it's the same
+        */
       }
     </style>
   </head>

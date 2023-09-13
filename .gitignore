@@ -4,3 +4,4 @@ lecture/
 *.txt
 docs/
 *.tmp
+.vscode/
