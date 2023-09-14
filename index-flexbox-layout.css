@@ -288,12 +288,23 @@ nav p {
 
 .main-content {
   display: flex;
+  /* * we need to specify align-items: flex-start cuz by default it's stretch and it's tall as the tallest flex items
+  * and now many times this is exactly the behavior that we want and before flexbox with just float layouts this kind of layout was actually almost impossible to achieve with CSS alone but now it's very easy it's even happen by default
+  ! just imagine if we use float for 3 element and set 2 element height for the tallest element so it's also achieve this right? no it doesn't, if the content of the tallest element grow and that time the height change how to can change the height of rest elements? so go to change manually but it's not good and so hard to maintain  */
   align-items: flex-start;
   gap: 75px;
+  margin-bottom: 60px;
 }
 
+/* ! now habing to do all this math kind of defeats(pha vo) the purpose of using flexbox in the first place maybe we just want the site to be really this size but then the article maybe we can allow flexbox to automatically figure out its size
+* so usually what we do in this situation is to simply set flex to 1 which will then automatically allow this element to grow as much as it can in the available space */
 article {
-  flex: 0 0 825px;
+  /* flex: 0 0 825px; */
+  flex: 1;
+  /* ! we dont specify the aside to flex: 1 why because that time article and aside will grow and occupy the space in the same so it's not what we want
+  * therefore we should specify fixed width for one element and use flex:1 for other element */
+  margin-bottom: 0;
+  /* * we should remove this margin-bottom here and add this for main-content because now it's container of article and aside right */
 }
 
 /* 
@@ -316,6 +327,9 @@ article {
 }
 
 aside {
+  /*! flex: flex-grow, flex-shrinkm flex-basis */
+  /* * so why we use flex shrink 0 because if not it'll automatically shrink to fit with dimession of container and if we only specify flex-basis: 300px it might not 300px right 
+  * and we also want flex-grow: 0 why? because we need some space between them and if flex-grow: 1 it'll automatically fill out all remaining space of container*/
   flex: 0 0 300px;
 }
 
