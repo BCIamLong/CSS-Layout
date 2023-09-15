@@ -14,7 +14,7 @@
       }
       .el--3 {
         background-color: green;
-        height: 150px;
+        /* height: 150px;*/
       }
       .el--4 {
         background-color: goldenrod;
@@ -51,10 +51,13 @@
         * so we use grid-template-columns
         * and now here we can define as many width values as we want and then for each of these values one column will be created
         * for example if we use: grid-template-columns: 250px 150px; so this code will generate two columns one a width of 250px and another one with a width of 150px
-        */
-        grid-template-columns: 250px 150px 100px 100px;
+      
+        grid-template-columns: 1fr 1fr 1fr auto;  */
 
-        grid-template-rows: 300px 200px;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: 2fr 1fr;
+        height: 600px;
+        /* grid-template-rows: 300px 200px;*/
         /*gap: 30px;*/
         column-gap: 30px;
         row-gap: 60px;
